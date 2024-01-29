@@ -8,7 +8,6 @@ import styles from "./Login.module.css"
 
 const Login = () => {
     return <div>
-        Login
         <Routes>
             <Route path="/" element={<LoginForm />} />
             <Route path="/criar" element={<LoginCreate />} /> 
