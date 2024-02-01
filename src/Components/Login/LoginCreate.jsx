@@ -15,7 +15,7 @@ const LoginCreate = () => {
     async function handleSubmit(e){
         e.preventDefault()
         const {url, options} = USER_POST({username: username.value, email: email.value, password: password.value})
-        if(username.value && email.value && password.value){
+        if(username.validate() && email.validate() && password.validate()){
             try{
                 setLoading(true)
                 const fetchData = await fetch(url, options)
