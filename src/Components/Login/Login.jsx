@@ -11,14 +11,16 @@ const Login = () => {
     const {login} = React.useContext(UserContext)
 
     if(login === true) return <Navigate to="/conta" />
-    return <div>
-        <Routes>
-            <Route path="/" element={<LoginForm />} />
-            <Route path="/criar" element={<LoginCreate />} /> 
-            <Route path="/perdeu" element={<LoginPasswordLost />} />
-            <Route path="/resetar" element={<LoginPasswordReset />} />
-        </Routes>
-    </div>
+    return <section className={styles.login}>
+        <div className={styles.forms}>
+            <Routes>
+                <Route path="/" element={<LoginForm />} />
+                <Route path="/criar" element={<LoginCreate />} />
+                <Route path="/perdeu" element={<LoginPasswordLost />} />
+                <Route path="/resetar" element={<LoginPasswordReset />} />
+            </Routes>
+        </div>
+    </section>
 }
 
 export default Login
