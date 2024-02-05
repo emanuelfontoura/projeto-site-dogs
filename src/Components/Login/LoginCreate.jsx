@@ -4,27 +4,22 @@ import Button from '../Forms/Button.jsx'
 import useForm from '../../Hooks/useForm.jsx'
 import { USER_POST } from '../../api.js'
 import { UserContext } from "../../UserContext.jsx";
+import useFetch from "../../Hooks/useFetch.jsx";
+import Error from "../Help/Error.jsx"
 
 const LoginCreate = () => {
     const {userLogin} = React.useContext(UserContext)
-    const [loading, setLoading] = React.useState(false)
     const username = useForm()
     const email = useForm('email')
     const password = useForm()
+    const {loading, error, request} = useFetch()
 
     async function handleSubmit(e){
         e.preventDefault()
         const {url, options} = USER_POST({username: username.value, email: email.value, password: password.value})
         if(username.validate() && email.validate() && password.validate()){
-            try{
-                setLoading(true)
-                const fetchData = await fetch(url, options)
-                if(!fetchData.ok) throw new Error('Algo inesperado ocorreu. Tente novamente!')
-                userLogin(username.value, password.value)
-            }catch(err){ 
-            }finally{
-                setLoading(false)
-            }
+            const {response} = await request(url, options)
+            if(response.ok) userLogin(username.value, password.value)
         }
     }
 
@@ -40,6 +35,7 @@ const LoginCreate = () => {
                 <Button contentText="Cadastrar"/>
             )}
         </form>
+        {error && <Error error={error} />}
     </section>
 }
 

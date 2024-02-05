@@ -42,7 +42,6 @@ export const UserStorage = ({children}) => {
             setError(null)
             setLoading(true)
             const fetchData = await fetch(url, options)
-            console.log(fetchData)
             if(!fetchData.ok) throw new Error('Usuário e/ou senha incorreto(s).')
             const data = await fetchData.json()
             window.localStorage.setItem('token', data.token)
