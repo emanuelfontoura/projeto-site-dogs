@@ -30,6 +30,8 @@ export const UserStorage = ({children}) => {
                 }finally{
                     setLoading(false)
                 }
+            }else{
+                setLogin(false)
             }
         }
         autoLogin()
@@ -56,14 +58,15 @@ export const UserStorage = ({children}) => {
     }
 
     // FAZER O LOGOUT DO USUÁRIO
-    async function userLogout(){
-        setData(null)
-        setError(null)
-        setLoading(false)
-        setLogin(false)
-        window.localStorage.removeItem('token')
-        navigate('/conta')
-    }
+    const userLogout = React.useCallback(
+        async function () {
+            setData(null)
+            setError(null)
+            setLoading(false)
+            setLogin(false)
+            window.localStorage.removeItem('token')
+        },
+    [])
 
     // PUXA O USER DE ACORDO COM O TOKEN PEGO
     async function getUser(token){
