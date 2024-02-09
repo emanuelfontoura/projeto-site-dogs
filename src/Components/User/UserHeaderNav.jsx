@@ -6,9 +6,11 @@ import Sair from '../../Assets/sair.svg?react'
 import styles from "./UserHeaderNav.module.css"
 import { NavLink, useNavigate } from "react-router-dom";
 import { UserContext } from "../../UserContext.jsx"
+import useMedia from "../../Hooks/useMedia.jsx";
 
 const UserHeaderNav = () => {
-    const [mobile, setMobile] = React.useState(null)
+    const mobile = useMedia('(max-width: 40rem)')
+    const [mobileMenu, setMobileMenu] = React.useState(false)
     const {userLogout} = React.useContext(UserContext)
     const navigate = useNavigate()
 
@@ -17,12 +19,15 @@ const UserHeaderNav = () => {
         navigate('/login')
     }
 
-    return <nav className={styles.nav}>
-        <NavLink to='/conta' end><MinhasFotos />{mobile ? 'Minhas Fotos' : ''}</NavLink>
-        <NavLink to='/conta/estatisticas' ><Estatisticas />{mobile ? 'Estatísticas' : ''}</NavLink>
-        <NavLink to='/conta/postar' ><Adicionar />{mobile ? 'Adicionar Foto' : ''}</NavLink>
-        <button onClick={handleLogout}><Sair />{mobile ? 'Sair' : ''}</button>
-    </nav>
+    return <>
+        {mobile && <button className={`${styles.mobileButton} ${mobileMenu ? styles.mobileButtonActive : ''}`} aria-label="Menu" onClick={() => setMobileMenu(!mobileMenu)}></button>}
+        <nav className={`${styles.nav} ${mobileMenu ? styles.mobileNav : ''}`}>
+            <NavLink to='/conta' end><MinhasFotos />{mobile ? 'Minhas Fotos' : ''}</NavLink>
+            <NavLink to='/conta/estatisticas' ><Estatisticas />{mobile ? 'Estatísticas' : ''}</NavLink>
+            <NavLink to='/conta/postar' ><Adicionar />{mobile ? 'Adicionar Foto' : ''}</NavLink>
+            <button onClick={handleLogout}><Sair />{mobile ? 'Sair' : ''}</button>
+        </nav>
+    </>
 }
 
 export default UserHeaderNav
