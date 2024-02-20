@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import Input from "../Forms/Input.jsx";
 import Button from "../Forms/Button.jsx"
 import useForm from "../../Hooks/useForm.jsx";
-import Error from "../Help/Error.jsx";
+import Error from "../Helper/Error.jsx";
 import styles from "./LoginForm.module.css"
 import stylesBtn from "../Forms/Button.module.css";
 

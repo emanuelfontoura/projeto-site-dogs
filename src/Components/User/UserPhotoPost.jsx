@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./UserPhotoPost.module.css";
 import Input from "../Forms/Input.jsx"
 import Button from "../Forms/Button.jsx"
-import Error from "../Help/Error.jsx"
+import Error from "../Helper/Error.jsx"
 import useForm from "../../Hooks/useForm.jsx"
 import useFetch from "../../Hooks/useFetch.jsx"
 import { useNavigate } from "react-router-dom";

@@ -4,7 +4,7 @@ import Footer from "./Components/Footer.jsx"
 import Home from "./Components/Home.jsx"
 import Login from "./Components/Login/Login.jsx"
 import User from "./Components/User/User.jsx"
-import ProtectedRoute from "./Components/Help/ProtectedRoute.jsx"
+import ProtectedRoute from "./Components/Helper/ProtectedRoute.jsx"
 import './App.css'
 import { UserStorage } from "./UserContext.jsx"
 import { BrowserRouter, Routes, Route } from "react-router-dom"

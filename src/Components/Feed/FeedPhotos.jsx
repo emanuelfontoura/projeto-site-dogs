@@ -1,8 +1,8 @@
 import React from "react";
 import FeedPhotosItem from "./FeedPhotosItem";
 import useFetch from "../../Hooks/useFetch";
-import Error from "../Help/Error.jsx"
-import Loading from "../Help/Loading.jsx"
+import Error from "../Helper/Error.jsx"
+import Loading from "../Helper/Loading.jsx"
 import styles from "./FeedPhotos.module.css"
 import { PHOTOS_GET } from "../../api";
 
