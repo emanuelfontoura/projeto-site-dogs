@@ -5,7 +5,7 @@ import Error from "../Helper/Error.jsx"
 import styles from "./PhotoCommentsForm.module.css"
 import { COMMENT_POST } from "../../api.js"
 
-const PhotoCommentsForm = ({id, setComments}) => {
+const PhotoCommentsForm = ({id, setComments, single}) => {
     const {error, request} = useFetch()
     const [comment, setComment] = React.useState('')
 
@@ -19,7 +19,7 @@ const PhotoCommentsForm = ({id, setComments}) => {
         }
     }
 
-    return <form className={styles.form} onSubmit={handleSubmit}>
+    return <form className={`${styles.form} ${single ? styles.single : ''}`} onSubmit={handleSubmit}>
         <textarea className={styles.textarea} placeholder="Comente..." id="comment" name="comment" value={comment} onChange={({target}) => setComment(target.value)} />
         <button className={styles.button} ><Enviar /></button>
         {error && <Error error={error} />}

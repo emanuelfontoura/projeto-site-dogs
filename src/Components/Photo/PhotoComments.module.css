@@ -7,6 +7,12 @@
     min-height: 2rem;
 }
 
+.single.comments{
+    height: 8rem;
+    overflow: scroll;
+    padding: 0px;
+}
+
 .comments li{
     margin-bottom: .5rem;
     line-height: 1.2;
