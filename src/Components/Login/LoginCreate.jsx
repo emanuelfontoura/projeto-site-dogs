@@ -6,6 +6,7 @@ import { USER_POST } from '../../api.js'
 import { UserContext } from "../../UserContext.jsx";
 import useFetch from "../../Hooks/useFetch.jsx";
 import Error from "../Helper/Error.jsx"
+import Head from "../Helper/Head.jsx"
 
 const LoginCreate = () => {
     const {userLogin} = React.useContext(UserContext)
@@ -24,6 +25,7 @@ const LoginCreate = () => {
     }
 
     return <section className="animeLeft">
+        <Head title='Criar' description='Página para criar a sua conta.' />
         <h1 className="title">Cadastre-se</h1>
         <form onSubmit={handleSubmit}>
             <Input type="text" label="Usuário" id="username" placeholder="Usuário" {...username}/>
